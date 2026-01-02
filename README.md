@@ -207,7 +207,6 @@ eikaiwa_daily_summary/
 ├── config.py            # 設定管理
 ├── requirements.txt     # Python依存関係
 ├── package.json         # Node.js依存関係（Vercel用）
-├── vercel.json          # Vercel設定
 ├── .env                 # 環境変数（作成必要）
 ├── setup_cron.sh        # cron設定スクリプト
 └── README.md           # このファイル
