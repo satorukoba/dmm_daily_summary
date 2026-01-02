@@ -1,9 +1,9 @@
-# Python関連ファイルを除外
-*.py
-*.pyc
-*.pyo
-*.pyd
-__pycache__/
+# Python関連ファイルを完全に除外
+**/*.py
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/__pycache__/
 venv/
 env/
 .venv/
@@ -15,4 +15,9 @@ env/
 README.md
 setup_cron.sh
 requirements.txt
+config.py
+dmm_scraper.py
+line_bot.py
+main.py
+news_processor.py
 
