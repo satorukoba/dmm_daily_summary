@@ -1,10 +1,16 @@
 venv/
 __pycache__/
 *.pyc
+*.py
 *.log
 .env
 .git/
 README.md
 setup_cron.sh
 requirements.txt
+config.py
+dmm_scraper.py
+line_bot.py
+main.py
+news_processor.py
 
