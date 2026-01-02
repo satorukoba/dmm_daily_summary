@@ -1,0 +1,17 @@
+{
+  "name": "eikaiwa-daily-summary-api",
+  "version": "1.0.0",
+  "description": "Vercel API for DMM Eikaiwa Daily News Summary",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "openai": "^4.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^34.0.0"
+  }
+}
+

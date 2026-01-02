@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+*.log
+.env
+.git/
+README.md
+setup_cron.sh
+requirements.txt
+
