@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMM英会話 Daily News Summary</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 DMM英会話 Daily News Summary</h1>
+            <p class="subtitle">最新のニュース要約とAdvanced英語フレーズ</p>
+            <div class="last-updated" id="lastUpdated">
+                最終更新: 読み込み中...
+            </div>
+        </header>
+
+        <main>
+            <div id="loading" class="loading">
+                <p>ニュースを読み込み中...</p>
+            </div>
+
+            <div id="error" class="error" style="display: none;">
+                <p>エラーが発生しました。ページを再読み込みしてください。</p>
+            </div>
+
+            <div id="newsContainer" class="news-container" style="display: none;">
+                <!-- ニュースカードがここに動的に追加されます -->
+            </div>
+
+            <div id="empty" class="empty" style="display: none;">
+                <p>まだニュースがありません。</p>
+                <p>しばらく待ってから再度お試しください。</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 DMM英会話 Daily News Summary</p>
+        </footer>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
+
