@@ -13,8 +13,10 @@ async function fetchNewsList() {
         const cachedData = localStorage.getItem(STORAGE_KEY);
         if (cachedData) {
             const data = JSON.parse(cachedData);
-            // キャッシュが1時間以内なら使用
-            if (data.lastUpdated && (Date.now() - new Date(data.lastUpdated).getTime()) < 3600000) {
+            // キャッシュが24時間以内なら使用（1日1回更新なので）
+            const cacheAge = Date.now() - new Date(data.lastUpdated).getTime();
+            const oneDayInMs = 24 * 60 * 60 * 1000; // 24時間
+            if (data.lastUpdated && cacheAge < oneDayInMs) {
                 return data;
             }
         }
