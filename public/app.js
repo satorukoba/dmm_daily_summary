@@ -1,19 +1,44 @@
 // APIのベースURL（Vercelデプロイ後のURLに置き換える）
 const API_BASE_URL = window.location.origin;
 
+// ローカルストレージのキー
+const STORAGE_KEY = 'daily-news-data';
+
 /**
- * ニュース一覧を取得
+ * ニュース一覧を取得（ローカルストレージから、またはAPIから）
  */
 async function fetchNewsList() {
     try {
-        const response = await fetch(`${API_BASE_URL}/api/news-list`);
+        // まずローカルストレージから取得を試みる
+        const cachedData = localStorage.getItem(STORAGE_KEY);
+        if (cachedData) {
+            const data = JSON.parse(cachedData);
+            // キャッシュが1時間以内なら使用
+            if (data.lastUpdated && (Date.now() - new Date(data.lastUpdated).getTime()) < 3600000) {
+                return data;
+            }
+        }
+
+        // キャッシュがないか古い場合は、daily-news APIを呼び出してデータを取得・処理
+        const response = await fetch(`${API_BASE_URL}/api/daily-news`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+        
+        // ローカルストレージに保存
+        if (data.news && data.news.length > 0) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+        
         return data;
     } catch (error) {
         console.error('Error fetching news:', error);
+        // エラー時はキャッシュがあれば使用
+        const cachedData = localStorage.getItem(STORAGE_KEY);
+        if (cachedData) {
+            return JSON.parse(cachedData);
+        }
         throw error;
     }
 }

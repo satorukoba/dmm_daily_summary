@@ -315,7 +315,7 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
-  // GETリクエスト: 手動実行用
+  // GETリクエスト: 手動実行用（処理したデータを直接返す）
   if (req.method === 'GET') {
     try {
       const newsList = await fetchDMMNews();
@@ -334,18 +334,13 @@ export default async function handler(req, res) {
         });
       }
 
-      // データを保存
+      // 処理したデータを直接返す
       const newsData = {
         lastUpdated: new Date().toISOString(),
         news: processedNews,
       };
-      await saveNewsData(newsData);
 
-      return res.status(200).json({
-        success: true,
-        message: 'News processed and saved successfully',
-        newsCount: processedNews.length,
-      });
+      return res.status(200).json(newsData);
     } catch (error) {
       console.error('Error processing news:', error);
       return res.status(500).json({
